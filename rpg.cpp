@@ -17,7 +17,7 @@ struct me
 
 int main(void)
 {
-    int a,b;
+    int a,b,c;
     struct mc mc;
     struct me me;
     
@@ -30,10 +30,22 @@ int main(void)
         printf("%s의 현재 체력:%d\n",mc.name,mc.health);
         printf("공격하시겠습니까?회복하시겠습니까?(1/2):");
         scanf("%d",&a);
-        mc.at=rand()%25;
         if(a==1)
        {
-            
+           printf("무기를 선택하세요(1,2,3)");
+           scanf("%d",&c);
+           if(c==1)
+           {
+               mc.at=rand()%25;
+           }
+           else if(c==2)
+           {
+               mc.at=(rand()%15)+5;
+           }
+           else if(c==3)
+           {
+               mc.at=rand()%50;
+           }
             me.hp=me.hp-mc.at;
             if(mc.at==0)
             {
@@ -48,6 +60,7 @@ int main(void)
        }
        else if(a==2)
        {
+           mc.at=rand()%25;
            mc.health=mc.health+mc.at;
            printf("%s의 현재 체력:%d,%d 회복되었습니다.\n",mc.name,mc.health,mc.at);
        }
